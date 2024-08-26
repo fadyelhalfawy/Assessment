@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector  } from 'react-redux';
 import { setAssessment, prevStage, nextStage } from './formSlice';
@@ -12,7 +12,7 @@ const PaginatedQuestions = ({ questions }) => {
     const storedData = useSelector((state) => state.form.assessments);
     const [currentPage, setCurrentPage] = useState(1);
     const [phase, setPhase] = useState(0);
-    const [numberOfQuestions, setNumberOfQuestions] = useState(5);
+    const [numberOfQuestions, setNumberOfQuestions] = useState(0);
     const pages = [];
 
     const generateYupSchema = (questions, numberOfQuestions, phase) => {
@@ -67,6 +67,10 @@ const PaginatedQuestions = ({ questions }) => {
     }
   };
 
+  useEffect(() => {
+    calculateQuestions(pages, currentPage);
+  },[]);
+
   return (
     <>
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -120,9 +124,6 @@ const PaginatedQuestions = ({ questions }) => {
           {currentPage < numberOfPages && <button type="submit">Next</button>}
           {currentPage === numberOfPages && <button type="submit">Submit</button>}
         </div>
-
-        
-      
     </form>
     </>
     
