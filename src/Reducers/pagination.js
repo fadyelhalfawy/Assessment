@@ -85,7 +85,7 @@ const PaginatedQuestions = ({ questions }) => {
             
             return (
               <li key={`question${globalIndex}`}>
-                <p>{question}</p>
+                <p>{globalIndex + 1 + " " + question}</p>
                 <Controller
                   name={question}
                   control={control}
