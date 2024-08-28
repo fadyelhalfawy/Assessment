@@ -1,4 +1,3 @@
-// Stage2.js
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setItem, nextStage } from './formSlice';
