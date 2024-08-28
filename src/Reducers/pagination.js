@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector  } from 'react-redux';
-import { setAssessment, prevStage, nextStage } from './formSlice';
+import { setAssessment, prevStage, nextStage, setResult } from './formSlice';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import PageIndicatorList from './pageIdentecator';
+import options from "./options";
+import questions from "./questions";
 
-const PaginatedQuestions = ({ questions }) => {
+const PaginatedQuestions = () => {
     const questionsPerPage = 5;
     const dispatch = useDispatch();
     const storedData = useSelector((state) => state.form.assessments);
@@ -63,6 +65,7 @@ const PaginatedQuestions = ({ questions }) => {
 
     else {
       setPhase(next => next + 5);
+      // dispatch(setResult());
       dispatch(nextStage());
     }
   };
@@ -92,7 +95,7 @@ const PaginatedQuestions = ({ questions }) => {
                   defaultValue=""
                   render={({ field }) => (
                     <div>
-                      {["Very Satsfied", "Satsfied", "Very Good", "Good", "Bad"].map((option, index) => (
+                      {options.map((option, index) => (
                         <label key={index} className="form-check-label">
                           <input
                               {...field}
