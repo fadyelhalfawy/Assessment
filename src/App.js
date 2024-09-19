@@ -7,6 +7,9 @@ import Stage4 from './Reducers/stage4';
 
 const App = () => {
   const stage = useSelector((state) => state.form.stage);
+  const form = useSelector((state => state.form));
+  console.log(form);
+  
   
   return (
     <div>
