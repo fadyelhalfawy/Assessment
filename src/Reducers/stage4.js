@@ -16,20 +16,23 @@ const Stage4 = () => {
       });
 
   return (
-    <div>
-      <h2>Stage 4: Results Summary</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Option</th>
-            <th>Count</th>
+    <div className="w-full max-w-4xl mx-auto bg-white p-8 shadow-lg rounded-lg">
+      <h2 className='text-3xl font-bold mb-6 text-gray-800 text-center'>Results Summary</h2>
+      <table className="min-w-full border-collapse block table">
+        <thead className="block table-header-group">
+          <tr className="border border-gray-300 border-none table-row">
+            <th className="bg-gray-100 p-4 text-left font-semibold text-gray-600 block table-cell">Option</th>
+            <th className="bg-gray-100 p-4 text-left font-semibold text-gray-600 block table-cell">Count</th>
           </tr>
         </thead>
         <tbody>
-          {options.map((option) => (
-            <tr key={option}>
-              <td>{option}</td>
-              <td>{optionCounts[option]}</td>
+          {options.map((option, index) => (
+            <tr
+              key={index}
+              className={`border border-gray-400 border-none table-row 
+                ${index % 2 === 1 ? 'bg-gray-200' : ''}`}>
+              <td className="p-4 text-gray-800 block table-cell">{option}</td>
+              <td className="p-4 text-gray-800 block table-cell">{optionCounts[option]}</td>
             </tr>
           ))}
         </tbody>
