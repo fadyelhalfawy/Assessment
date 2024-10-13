@@ -6,17 +6,19 @@ import Stage3 from './Reducers/stage3';
 import Stage4 from './Reducers/stage4';
 
 const App = () => {
-  const stage = useSelector((state) => state.form.stage);
   const form = useSelector((state => state.form));
   console.log(form);
   
   
   return (
     <div>
-      {stage === 1 && <Stage1 />}
-      {stage === 2 && <Stage2 />}
-      {stage === 3 && <Stage3 />}
-      {stage === 4 && <Stage4 />}
+      {(form.stage === 1 && <Stage1 />) ||
+       (form.stage === 2 && <Stage2 />) ||
+        (form.stage === 3 && <Stage3 />) ||
+         (form.stage === 4 && <Stage4 />)}
+      {/* {form.stage === 2 && <Stage2 />} */}
+      {/* {form.stage === 3 && <Stage3 />} */}
+      {/* {form.stage === 4 && <Stage4 />} */}
     </div>
   );
 }
