@@ -77,7 +77,7 @@ const PaginatedQuestions = () => {
     <>
     <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-3xl mx-auto my-4 bg-white p-6 shadow-md rounded-lg">
       <h1 className="text-3xl font-bold mb-4 text-gray-800 text-center">Survey Form</h1>
-      <h2 className="text-2xl font-bold mb-4 text-lime-600 text-center">{storedData.selectedItem}</h2>
+      <h2 className="text-2xl font-bold mb-4 text-lime-600 text-center">{(storedData.selectedItem[0]).toUpperCase() + (storedData.selectedItem).slice(1)}</h2>
       <PageIndicatorList 
         numberOfPages={numberOfPages}
         currentPage={currentPage}
@@ -95,6 +95,7 @@ const PaginatedQuestions = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
+                    <>
                     <div className="flex space-x-4">
                       {options.map((option, index) => (
                         <div key={index} className="flex items-center space-x-2">
@@ -111,12 +112,14 @@ const PaginatedQuestions = () => {
                         </div>
                         
                       ))}
-                      {errors[question] && (
-                        <p className="text-red-600">
-                          {errors[question]?.message}
-                        </p>
-                      )}
                     </div>
+
+                    {errors[question] && (
+                      <p className="text-lg font-medium text-red-600">
+                        {errors[question]?.message}
+                      </p>
+                    )}
+                    </>
                   )}
                 />
               </li>
