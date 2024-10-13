@@ -32,15 +32,15 @@ const Stage1 = () => {
 
   return (
     <form className="bg-gray-100 m-3 p-5 leading-7" onChange={handleSubmit}>
-      <div className='flex justify-between mb-3'>
+      <div className='md:flex md:justify-between md:mb-3 lg:flex lg:justify-between'>
       <div>
-      <h1 className='text-4xl font-black mb-2'>
+      <h1 className='text-3xl font-black mb-2'>
         Matthew Mason
       </h1>
 
       <p className='mb-4'>Pre-sales Engine Sales</p>
 
-      <h2 className='text-xl font-medium mb-2'>Please select your current level to proceed</h2>
+      <h2 className='text-2xl font-medium mb-2'>Please select your current level to proceed</h2>
       <ul className='flex'>
         {titles.map((title, index) => {
           return (
@@ -67,8 +67,6 @@ const Stage1 = () => {
                       >
                         {title}
                       </label>
-
-                    {/* {errors.option && <p className='text-base text-red-600 ml-2 sm:max-md:text-sm'>{errors.option.message}</p>} */}
                   </div>
                 )}
               />
@@ -78,7 +76,7 @@ const Stage1 = () => {
       </ul>
       </div>
 
-      <img src={leaderImage} alt='Leadership-Image'className='w-52'/>
+      <img src={leaderImage} alt='Leadership-Image'className="w-32 max-md:mx-auto md:w-40 lg:w-52"/>
       </div>
     </form>
   );
