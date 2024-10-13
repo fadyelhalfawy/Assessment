@@ -6,14 +6,10 @@ const PageIndicatorList = ({ currentPage, numberOfPages }) => {
           return (
             <li
               key={pageNumber}
-              style={{
-                margin: '10px',
-                padding: '10px 20px',
-                cursor: 'pointer',
-                backgroundColor: pageNumber === currentPage ? '#007bff' : '#e9ecef',
-                color: pageNumber === currentPage ? 'white' : 'black',
-                borderRadius: '5px',
-              }}
+              className={`mx-auto mb-3 p-3 
+                ${pageNumber === currentPage ? 'text-white' : 'text-black'}
+                ${pageNumber === currentPage ? 'bg-lime-500' : 'bg-[#e9ecef]'}
+                 rounded`}
             >
               {pageNumber}
             </li>
